@@ -123,20 +123,161 @@
                     <!-- Placeholder para Video -->
                     <div class="p-3 border rounded-md bg-white">
                         <strong>Video Introductorio:</strong> "¿Qué es el Análisis Multivariado?"
-                        <p class="text-sm text-gray-600">[Aquí iría un reproductor de video con subtítulos descriptivos]</p>
+
+<p class="text-sm text-gray-600">
+  Mirá el video explicativo con subtítulos descriptivos: 
+  <a href="https://www.youtube.com/watch?v=L9Pn_G6Jqv8" 
+     target="_blank" 
+     class="text-blue-700 underline">
+    Ver en YouTube
+  </a>
+</p>
+
                         <!-- Transcripción textual -->
                         <details class="mt-2">
                             <summary class="text-blue-700 cursor-pointer">Ver Transcripción Textual</summary>
                             <p class="mt-2 text-sm p-2 bg-gray-50 border rounded">
-                                [Inicio de la transcripción]... "Hola a todos. En esta unidad, exploraremos el análisis multivariado..." [Fin de la transcripción]
+                                [Inicio de la transcripción]... Hola, hoy vamos a meternos de lleno en el análisis multivariado de datos. Tenemos como base el material de la unidad 5 de un curso de la Universidad Nacional de Salta, Métodos Cuantitativos para la Toma de Decisiones. Y la idea es, bueno, sacarle el jugo, ¿no? Ver las ideas clave y para qué nos sirve todo esto en la práctica. 
+
+Ok, vamos a desglosarlo. Y es un tema fundamental hoy en día, diría yo. Es que vivimos rodeados de información, de datos, y todo parece estar conectado. 
+
+El análisis multivariado, bueno, es justo la herramienta que necesitamos para entender esas conexiones, esas redes complejas de variables que se influyen mutuamente. El material que estamos viendo apunta a eso, a dar las bases para usar estas técnicas, para saber qué hacer cuando faltan datos o cuando aparecen esos valores raros, los outliers, y claro, también cómo usar software como R, SPS, para al final, bueno, tomar decisiones con más fundamento. Algo que me llamó la atención de este material es cómo presenta la información. 
+
+Menciona los principios DUA, ¿no? O sea, como que te da varias formas de acceder al contenido. Exacto. Textos, glosario, videos, audios, como para adaptarse a distintas maneras de aprender. 
+
+Sí, sí, es reconocer que no todos aprendemos igual. La idea es, ¿no? Hacerlo más accesible. Pero bueno, vayamos al meollo del asunto, a los conceptos.
+
+Dale. Antes de saltar a lo multi, el material repasa algunas bases. Por ejemplo, minería de datos, o data mining. 
+
+Suena muy técnico, pero en el fondo es. Buscar patrones, ¿no? Como buscar pepitas de oro en una montaña de datos. Tal cual. 
+
+Y otro concepto clave que mencionan ahí es el outlier. El valor atípico. Muy lejos del resto. 
+
+Podría ser un error al medir o podría ser algo real, pero muy poco común. Detectarlos es, es vital, porque te pueden distorsionar los resultados, sobre todo los promedios. Te los pueden desviar mucho. 
+
+Entiendo. Y antes de llegar a lo multivariado, como decías, están los pasos previos. El análisis univariado, bivariado. 
+
+Correcto. El univariado es mirar una variable solita. Por ejemplo, ¿cuál es la edad promedio de la gente en este estudio? O ¿cómo se distribuyen los ingresos? Una a la vez. 
+
+Simple. Simple. Luego el bivariado ya busca relaciones, pero solo entre dos variables. 
+
+¿Será que la gente que estudia más horas saca mejores notas? ¿Hay correlación? Son análisis útiles, ¿eh? Pero se quedan cortos muchas veces. Y acá es donde se pone realmente interesante, entonces. El salto a lo multivariado. 
+
+¿Qué es lo que ganamos al analizar tres, cuatro, bueno, más variables juntas? Ganamos profundidad. Ganamos realismo. El mundo no funciona con relaciones de a dos variables nomás. 
+
+Analizar muchas variables a la vez nos deja ver las interacciones. Esos patrones que solo aparecen cuando combinas varios factores. Es como, no sé, pasar de una foto en blanco y negro a ver la película en 3D y a color. 
+
+Demuestra la complicidad real. Clarísimo. Y para bajar esto a tierra, el material tiene varias actividades prácticas. 
+
+Quizás en vez de ir una por una, podemos ver qué nos enseñan en conjunto, ¿te parece? Dale, me parece bien. Hay unas primeras actividades, como la del número de hijos por familia o la de los puntajes de golf. Sí. 
+
+Que parecen enfocadas en algo básico, pero crucial. Cómo mirar los datos al principio. Te piden hacer distintos gráficos. 
+
+Barras de sectores, tallo y hoja, los diagramas de caja o box plots. ¿Y la lección ahí es usar todos los gráficos que existen? No, no tanto así. La lección es doble, me parece. 
+
+Primero, que cada gráfico te cuenta algo un poquito distinto de los mismos datos. Un gráfico de barras es genial para comparar grupos, pero uno de tallo y hoja te muestra mejor la forma de la distribución, el detalle. Ajá. 
+
+Y segundo, y esto es importante, te fuerza a pensar qué medidas resumen usar. El promedio, la mediana, cuál es mejor acá. Si tienes valores muy extremos, como podría pasar en el golf con alguien que jugó increíblemente bien o muy mal, el promedio se puede volver engañoso. 
+
+Y ahí es donde el box plot ayuda mucho. El famoso diagrama de caja o box plot. ¿Qué nos muestra exactamente ese gráfico? Imagínate una cajipa con unos bigotes. 
+
+La caja en sí te marca dónde está el 50% central de tus datos. La línea del medio es la mediana, el valor justo en el centro, y los bigotes se estiran para mostrarte más o menos el rango general de los datos normales. Lo más útil es que si hay puntitos fuera de esos bigotes, esos son posibles outliers. 
+
+Esos valores atípicos que decíamos, te da una radiografía rápida de cómo se distribuyen los datos y si hay alguna oveja negra. La actividad del golf, de hecho, tiene un desafío específico. Identificar un outlier a ojo y pensar cómo te cambiaría la media. 
+
+O sea, primera lección clave, mirar los datos, visualizarlos de varias formas para entender cómo son y si hay algo raro. No calcular promedios a ciegas. Exactamente. 
+
+Ese es el punto de partida. Después, el material ya nos mete en problemas más, bueno, más reales. Ahí entran el análisis de las pizzas congeladas y el de la biomasa de algas.
+
+Pizzas congeladas. Suena rico, pero analítico. Muy analítico. 
+
+Tienes datos nutricionales de un montón de pizzas. Humedad, cuánta grasa, proteína, calorías, de todo. Pero ojo, el dataset tiene agujeros. 
+
+Faltan datos. Y eso es súper común en la vida real. Claro, me imagino.
+
+Entonces la actividad te obliga a pensar, ¿y ahora qué hago? Borro las pizzas incompletas. Invento un valor para rellenar. Cualquier cosa que decidas va a afectar el análisis que hagas después. 
+
+Por ejemplo, si querés ver si más grasa significa más calorías. Entiendo, el lío de los datos del mundo real. Y mencionaste unas algas también. 
+
+¿Qué onda con eso? El caso de la biomasa del alga espartina es interesante. Ahí tienes la biomasa, o sea cuánto crece el alga, y un montón de factores del ambiente. La zona, la profundidad, la salinidad del agua, la acidez, cuánto potasio, sodio, zinc hay.
+
+Ah, muchas cosas. Claro. Se busca entender cómo todo ese cóctel ambiental afecta el crecimiento del alga. 
+
+Ya no es solo si A afecta a B. Es como A, B, C, D juntas influyen en E, que sería la biomasa. Se usan gráficos de dispersión, los clutter plots, para ver relaciones de E a pares, ¿no? Por ejemplo, si más sodio se relaciona con más potasio. Pero la idea es pensar en el conjunto.
+
+O sea, estas actividades nos llevan a lidiar con datos incompletos y a explorar relaciones donde hay muchos factores jugando. Ya no es tan lineal la cosa. Justamente. 
+
+Te empujan a pensar en cómo las cosas dependen de varias otras, y en que casi siempre hay que limpiar y preparar los datos antes de poder sacar conclusiones firmes. Es un baño de realidad, digamos. Bien. 
+
+Y después de estos desafíos de datos sucios y multifactoriales, ¿para dónde sigue el material? Veo actividades sobre hoteles, unas flores famosas… Sí. Ahí pasamos a aplicaciones un poco más específicas, podríamos decir. La actividad de los hoteles en Washington, D.C. es un buen ejemplo de análisis de mercado.
+
+Tienes datos del tamaño del hotel, cuántos cuartos, las tarifas, mínima, máxima, qué servicios ofrecen, si tienen pileta, bar, desayuno. Y se busca explorar relaciones. Los hoteles más grandes son más caros. 
+
+Y, de nuevo, la casa de outliers, hoteles que parecen muy baratos o muy caros para lo que son. Claro. ¿Por qué este hotel tan chiquito cobra tanto? ¿O al revés? Exacto. 
+
+O preguntarse. ¿Un hotel con pileta tiene tarifas muy distintas a uno que no la tiene, controlando por otros factores? Es el tipo de análisis que ayuda a entender cómo se posicionan en el mercado, las estrategias de precios… Interesante. ¿Y lo de las flores iris? ¿Qué dijiste que era un clásico? El dataset iris es súper famoso en esto del data mining y el aprendizaje automático.
+
+Son datos muy simples en realidad. Medidas del largo y ancho de los pétalos y sépalos de tres especies de flores iris distintas. El desafío clásico es, podemos usar sólo esas medidas para saber de qué especie es cada flor. 
+
+Es un problema de clasificación típico. Ah, como para entrenar un modelo que después las identifique. Por ahí va la cosa. 
+
+Introduce esa idea de usar las variables para agrupar o separar los casos. Y también, de nuevo, pide estar atentos a posibles outliers. Una flor con medidas totalmente locas es un error de medición o una rareza de la naturaleza.
+
+Hay que pensarlo. Vale. Entonces pasamos de visualizar y limpiar datos a usar las técnicas para responder preguntas más concretas, de negocio o de clasificación. 
+
+¿Y queda algo más avanzado? ¿Mencionaste algo de unas caras? Ah, sí. Las caras de Chernoff. Esa es una técnica de visualización bastante particular, muy creativa.
+
+La idea es representar cada variable de tus datos multivariados como un rasgo de una cara dibujada. Por ejemplo, el tamaño de los ojos puede ser una variable, la curvatura de la boca otra, el largo de la nariz otra, y así. Suena curioso, por decirlo menos. 
+
+¿Y sirve? ¿Funciona? Mira, tiene sus cosas buenas y malas. La ventaja es que nosotros, los humanos, somos muy buenos reconociendo caras y notando diferencias sutiles en las expresiones. Entonces, en teoría, podría ayudar a detectar patrones complejos o grupos de datos de una forma más intuitiva, visualmente.
+
+Entiendo. ¿Cómo que nuestro cerebro está cableado para eso? Algo así. La desventaja es que puede ser medio subjetivo qué variable asignas a qué rasgo, y si tienes muchas variables, bueno, la cara se puede volver un monstruo ilegible.
+
+No es algo que se use todos los días para todo, pero es un buen ejemplo del desafío constante que hay en visualizar información con muchas dimensiones. ¿Cómo lo mostramos para que nuestro cerebro lo capte? A veces los gráficos de siempre no alcanzan. Entendido. 
+
+Es como buscar el lenguaje visual adecuado para que los datos nos hablen claro. Fascinante. Y volviendo un poquito a cómo está armado el curso, hablabas de la flexibilidad, de los principios DUA.
+
+¿Cómo se nota eso más allá de que haya videos o textos? Se nota también en cómo te permiten demostrar lo que aprendiste. No te exigen sólo el típico informe escrito. Dan opciones.
+
+Puedes hacer una presentación grabada, por ejemplo, o un mapa conceptual explicando las ideas, o incluso entregar código comentado si usaste algún software. Ah, mira, qué bueno. Sí. 
+
+Y además animan a que, si querés, busques otros datos, otros datasets que te interesen más a vos, por tu carrera o tus gustos, y también a trabajar en equipo. O sea, la idea es que no sea algo abstracto, sino que lo conectes con lo tuyo y que sea más activo el aprendizaje. Exactamente. 
+
+Que no sea sólo aprender la técnica por la técnica, sino ver cómo te sirve para problemas o datos que a vos te resuenan más. Así el conocimiento como que se fija mejor, ¿no? Sí, totalmente. Bueno, hicimos un recorrido bastante completo, me parece.
+
+Empezamos viendo por qué necesitamos ir más allá de mirar una o dos variables no más. Vimos lo crucial que es visualizar los datos primero, con herramientas como los boxplots, para pescar cosas raras. Enfrentamos la realidad de los datos sucios o incompletos, como con las pizzas.
+
+Exploramos cómo interactúan muchos factores, con el ejemplo de las algas. Vimos aplicaciones en análisis de mercado, con los hoteles, y de clasificación, con las famosas flores iris. Y hasta nos asomamos a formas más raras de visualizar, como las caras de Chernoff.
+
+Entonces, si tuvieras que resumir, ¿cuál es el gran mensaje que nos deja todo este análisis? Yo creo que el mensaje central es que entender las relaciones multivariadas nos da una visión mucho más rica, más precisa del mundo que nos rodea. Nos saca de las simplificaciones excesivas. Nos permite ver patrones, estructuras, conexiones que quedan ocultas si sólo miramos las variables de A1 o de A2.
+
+Y esto no es sólo para los científicos de datos o los académicos, ¿eh? Es una forma de pensar. Es como tener una lente más potente para analizar información en cualquier campo. Una herramienta para navegar la complejidad de hoy.
+
+Tal cual. Y quizás la reflexión final, para quienes no se escuchan, es esta. Más allá de los ejemplos que vimos, que son más bien académicos o de negocio, ¿dónde más podríamos estar viendo relaciones multivariadas sin darnos cuenta? Pensemos en los datos que consumimos todos los días.
+
+Noticias de economía. Inflación, desempleo, tasas de interés. Todo eso interactúa, ¿no? Resultados deportivos.
+
+Las estadísticas de cada jugador y cómo afectan al equipo entero. Las recomendaciones que nos hacen online, basadas en un montón de cosas de nuestro historial. La pregunta es, ¿qué patrones complejos podríamos descubrir si aplicáramos esta mirada multivariada a la información que ya tenemos ahí, al alcance de la mano? ¿Qué conexiones se nos están pasando por alto por mirar las cosas de forma demasiado simple?
+
+(Transcrito por TurboScribe.ai. Actualizar a Ilimitado para eliminar este mensaje.) [Fin de la transcripción]
                             </p>
                         </details>
                     </div>
                     <!-- Placeholder para Audiodescripción -->
-                    <div class="p-3 border rounded-md bg-white">
-                        <strong>Audio Descriptivo:</strong> "Guía de Análisis de Gráficos"
-                        <p class="text-sm text-gray-600">[Aquí iría un reproductor de audio describiendo cómo interpretar los gráficos de la unidad]</p>
-                    </div>
+                   <div class="p-3 border rounded-md bg-white">
+  <strong>Audio Descriptivo:</strong> "Guía de Análisis de Gráficos"
+  <p class="text-sm text-gray-600 mb-2">
+    Escuchá la descripción del análisis visual de los gráficos.
+  </p>
+
+  <!-- Reproductor de audio incrustado desde Google Drive -->
+  <iframe src="https://drive.google.com/file/d/1PAYbqEuzewhIb25CGpJbF4aWCwreFUfg/preview" 
+          width="100%" height="60" 
+          allow="autoplay">
+  </iframe>
+</div>
+                    
+                    
                 </div>
             </section>
             
