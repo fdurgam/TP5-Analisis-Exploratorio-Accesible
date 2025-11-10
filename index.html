@@ -1,1 +1,460 @@
-ffs
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título actualizado para reflejar la Unidad Didáctica -->
+    <title>Unidad 5: Análisis Multivariado de Datos (DUA)</title>
+    <!-- Carga de Tailwind CSS para un diseño limpio y adaptable -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos adicionales para mejorar la legibilidad */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4 {
+            font-weight: 600;
+        }
+        /* Estilo para las listas de consignas y objetivos */
+        main section ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+            margin-top: 1rem;
+        }
+        main section ul.consignas {
+            list-style-type: lower-alpha;
+        }
+        main section li {
+            margin-bottom: 0.75rem;
+        }
+        /* Estilo para las tablas de datos */
+        pre {
+            background-color: #f9fafb; /* bg-gray-50 */
+            border: 1px solid #e5e7eb; /* border-gray-200 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 1rem;
+            overflow-x: auto; /* Permite scroll horizontal si los datos son muy anchos */
+            white-space: pre; /* Mantiene el formato de espacios */
+            font-family: monospace;
+        }
+        /* Estilo para el enlace "saltar al contenido" */
+        .skip-link {
+            position: absolute;
+            top: -100px; /* Oculto fuera de la pantalla */
+            left: 0;
+            background: #2563eb; /* bg-blue-600 */
+            color: white;
+            padding: 0.5rem 1rem;
+            z-index: 100;
+            transition: top 0.2s ease-in-out;
+            border-bottom-right-radius: 0.5rem;
+        }
+        .skip-link:focus {
+            top: 0; /* Visible cuando recibe foco */
+        }
+        /* Estilos para el Glosario */
+        dl dt {
+            font-weight: 600;
+            color: #1e3a8a; /* text-blue-900 */
+            margin-top: 0.5rem;
+        }
+        dl dd {
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Enlace "Saltar al Contenido" para accesibilidad con teclado -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <div class="max-w-4xl mx-auto p-4 sm:p-8 bg-white shadow-lg rounded-lg my-8">
+
+        <!-- Encabezado con rol de "banner" para accesibilidad -->
+        <header class="pb-4 border-b border-gray-200 mb-6" role="banner">
+            <p class="text-sm text-gray-600">Universidad Nacional de Salta - Fac. de Cs. Exactas - Dpto. Informática</p>
+            <h1 class="text-3xl font-bold text-blue-800 mt-2">Métodos Cuantitativos para la Toma de Decisiones (MCTD)</h1>
+            <p class="text-lg text-gray-700 mt-2">Año 2025</p>
+        </header>
+        
+        <!-- Contenido principal con ID para el "skip-link" y rol "main" -->
+        <main id="main-content" role="main">
+            
+            <!-- Título de la Unidad -->
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b-2 border-blue-700">TEMA 5: Análisis Multivariado de Datos</h2>
+
+            <!-- Sección de Objetivos y Propósito (Contextualización) -->
+            <section class="mb-10" aria-labelledby="objetivos-heading">
+                <h3 id="objetivos-heading" class="text-xl font-semibold text-gray-800 mb-3">Propósito Formativo de la Unidad</h3>
+                <p class="mb-4">
+                    El propósito de esta unidad es que los estudiantes adquieran la capacidad de:
+                </p>
+                <ul>
+                    <li>Comprender los fundamentos del análisis multivariado y su importancia en la toma de decisiones.</li>
+                    <li>Aplicar técnicas estadísticas para explorar y analizar conjuntos de datos con múltiples variables.</li>
+                    <li>Identificar y tratar valores perdidos o anómalos, realizando transformaciones adecuadas de los datos.</li>
+                    <li>Utilizar herramientas informáticas (como R, SPSS o Kaggle) para procesar y visualizar datos multivariados.</li>
+                    <li>Interpretar los resultados obtenidos, elaborando conclusiones útiles para la gestión y la toma de decisiones organizacionales.</li>
+                </ul>
+            </section>
+
+            <!-- PRINCIPIO DUA 1: Múltiples Medios de Representación (El Qué) -->
+            <section class="mb-10 p-4 bg-blue-50 border border-blue-200 rounded-lg" aria-labelledby="dua1-heading">
+                <h3 id="dua1-heading" class="text-xl font-semibold text-blue-800 mb-3">Principio DUA 1: Múltiples Medios de Representación (El Qué)</h3>
+                
+                <h4 id="glosario-heading" class="text-lg font-semibold text-gray-800 mt-4 mb-2">Glosario de Términos Clave</h4>
+                <p>Formatos alternativos (visual y auditivo) para términos técnicos.</p>
+                <dl class="mt-2">
+                    <dt>Minería de Datos (Data Mining):</dt>
+                    <dd>Proceso de descubrir patrones y conocimiento útil en grandes conjuntos de datos.</dd>
+                    <dt>Outlier (Valor Atípico):</dt>
+                    <dd>Una observación que se desvía significativamente de otras observaciones en el mismo conjunto de datos.</dd>
+                    <dt>Análisis Univariado:</dt>
+                    <dd>Análisis de una sola variable a la vez (ej. media, mediana, histograma).</dd>
+                    <dt>Análisis Bivariado:</dt>
+                    <dd>Análisis de la relación entre dos variables (ej. correlación, gráfico de dispersión).</dd>
+                    <dt>Análisis Multivariado:</dt>
+                    <dd>Análisis de la relación entre tres o más variables simultáneamente.</dd>
+                </dl>
+
+                <h4 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Recursos Alternativos</h4>
+                <div class="space-y-3 mt-2">
+                    <!-- Placeholder para Video -->
+                    <div class="p-3 border rounded-md bg-white">
+                        <strong>Video Introductorio:</strong> "¿Qué es el Análisis Multivariado?"
+                        <p class="text-sm text-gray-600">[Aquí iría un reproductor de video con subtítulos descriptivos]</p>
+                        <!-- Transcripción textual -->
+                        <details class="mt-2">
+                            <summary class="text-blue-700 cursor-pointer">Ver Transcripción Textual</summary>
+                            <p class="mt-2 text-sm p-2 bg-gray-50 border rounded">
+                                [Inicio de la transcripción]... "Hola a todos. En esta unidad, exploraremos el análisis multivariado..." [Fin de la transcripción]
+                            </p>
+                        </details>
+                    </div>
+                    <!-- Placeholder para Audiodescripción -->
+                    <div class="p-3 border rounded-md bg-white">
+                        <strong>Audio Descriptivo:</strong> "Guía de Análisis de Gráficos"
+                        <p class="text-sm text-gray-600">[Aquí iría un reproductor de audio describiendo cómo interpretar los gráficos de la unidad]</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Contenido Principal: Taller Práctico -->
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6 mt-10 pb-2 border-b-2 border-gray-300">Taller N.º 5: Aplicación Práctica</h2>
+
+            <!-- Ejercicio 1 (Actividad 1) -->
+            <section class="mb-10" aria-labelledby="ej1-heading">
+                <h3 id="ej1-heading" class="text-xl font-semibold text-gray-800 mb-3">Actividad 1: Número de niños por familia</h3>
+                <p class="mb-4">
+                    A 60 estudiantes universitarios (30 mujeres y 30 hombres) se les solicitó 
+                    indicar el número de niños en su familia. Los datos recolectados son los 
+                    siguientes, correspondiendo la primera mitad a las mujeres (las 5 primeras 
+                    columnas):
+                </p>
+                <h4 id="ej1-datos-heading" class="text-md font-semibold text-gray-700 mb-2">Datos Recolectados (Actividad 1)</h4>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full border border-gray-300 mb-4" aria-labelledby="ej1-datos-heading">
+                        <caption class="text-sm text-left text-gray-600 mb-2">
+                            Datos de 60 estudiantes. Columnas 1-5: Mujeres. Columnas 6-10: Hombres.
+                        </caption>
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th scope="col" class="border p-2">Col 1</th><th scope="col" class="border p-2">Col 2</th><th scope="col" class="border p-2">Col 3</th><th scope="col" class="border p-2">Col 4</th><th scope="col" class="border p-2">Col 5</th>
+                                <th scope="col" class="border p-2">Col 6</th><th scope="col" class="border p-2">Col 7</th><th scope="col" class="border p-2">Col 8</th><th scope="col" class="border p-2">Col 9</th><th scope="col" class="border p-2">Col 10</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t">
+                                <td class="border p-2 text-center">1</td><td class="border p-2 text-center">4</td><td class="border p-2 text-center">4</td><td class="border p-2 text-center">6</td><td class="border p-2 text-center">3</td>
+                                <td class="border p-2 text-center">4</td><td class="border p-2 text-center">1</td><td class="border p-2 text-center">7</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">4</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="border p-2 text-center">3</td><td class="border p-2 text-center">9</td><td class="border p-2 text-center">2</td><td class="border p-2 text-center">7</td><td class="border p-2 text-center">3</td>
+                                <td class="border p-2 text-center">2</td><td class="border p-2 text-center">5</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">2</td><td class="border p-2 text-center">2</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="border p-2 text-center">3</td><td class="border p-2 text-center">5</td><td class="border p-2 text-center">5</td><td class="border p-2 text-center">5</td><td class="border p-2 text-center">3</td>
+                                <td class="border p-2 text-center">3</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">2</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="border p-2 text-center">3</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">5</td><td class="border p-2 text-center">1</td><td class="border p-2 text-center">5</td>
+                                <td class="border p-2 text-center">3</td><td class="border p-2 text-center">2</td><td class="border p-2 text-center">7</td><td class="border p-2 text-center">2</td><td class="border p-2 text-center">1</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="border p-2 text-center">4</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">3</td>
+                                <td class="border p-2 text-center">1</td><td class="border p-2 text-center">2</td><td class="border p-2 text-center">4</td><td class="border p-2 text-center">1</td><td class="border p-2 text-center">3</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="border p-2 text-center">6</td><td class="border p-2 text-center">5</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">4</td><td class="border p-2 text-center">2</td>
+                                <td class="border p-2 text-center">1</td><td class="border p-2 text-center">4</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center">2</td><td class="border p-2 text-center">3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h4 class="text-md font-semibold text-gray-700 mt-4 mb-2">Consignas de la Actividad 1</h4>
+                <ul class="consignas">
+                    <li>Agrupe estos datos en una distribución de frecuencias.</li>
+                    <li>Construya el diagrama de barras correspondiente.</li>
+                    <li>Realice un diagrama de tallo y hoja.</li>
+                    <li>Construya un gráfico de sectores indicando los porcentajes de número de niños.</li>
+                    <li>Realice la tabla de frecuencias y los 3 gráficos anteriores separando por sexo de los estudiantes.</li>
+                    <li>
+                        Calcule el número de niños promedio. ¿Es el promedio una buena medida de 
+                        centralización de los datos en este caso? ¿Se concentran los valores 
+                        alrededor de la media?
+                    </li>
+                    <li>
+                        Calcule ahora la mediana. ¿Es la mediana una buena medida de centralización 
+                        de los datos en este caso? ¿Su valor es cercano al de la media?
+                    </li>
+                </ul>
+            </section>
+    
+            <!-- Ejercicio 2 (Actividad 2) -->
+            <section class="mb-10" aria-labelledby="ej2-heading">
+                <h3 id="ej2-heading" class="text-xl font-semibold text-gray-800 mb-3">Actividad 2: Puntajes de torneo de golf</h3>
+                <p class="mb-4">
+                    Los puntajes de la ronda de apertura del torneo de damas de la 
+                    Asociación de Profesionales de Golf se indican en la siguiente tabla:
+                </p>
+                <h4 id="ej2-datos-heading" class="text-md font-semibold text-gray-700 mb-2">Datos Recolectados (Actividad 2)</h4>
+                
+                <!-- Datos convertidos a tabla accesible -->
+                <div class="overflow-x-auto">
+                    <table class="min-w-full border border-gray-300 mb-4" aria-labelledby="ej2-datos-heading">
+                        <caption class="text-sm text-left text-gray-600 mb-2">
+                            Puntajes de la ronda de apertura.
+                        </caption>
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th scope="col" class="border p-2">C1</th><th scope="col" class="border p-2">C2</th><th scope="col" class="border p-2">C3</th><th scope="col" class="border p-2">C4</th>
+                                <th scope="col" class="border p-2">C5</th><th scope="col" class="border p-2">C6</th><th scope="col" class="border p-2">C7</th><th scope="col" class="border p-2">C8</th>
+                                <th scope="col" class="border p-2">C9</th><th scope="col" class="border p-2">C10</th><th scope="col" class="border p-2">C11</th><th scope="col" class="border p-2">C12</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t"><td class="border p-2 text-center">69</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">77</td><td class="border p-2 text-center">80</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">83</td><td class="border p-2 text-center">68</td><td class="border p-2 text-center">73</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">75</td><td class="border p-2 text-center">78</td><td class="border p-2 text-center">76</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">68</td><td class="border p-2 text-center">71</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">79</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">75</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">74</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">68</td><td class="border p-2 text-center">79</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">76</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">77</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">75</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">72</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">71</td><td class="border p-2 text-center">71</td><td class="border p-2 text-center">70</td><td class="border p-2 text-center">82</td><td class="border p-2 text-center">77</td><td class="border p-2 text-center">76</td><td class="border p-2 text-center">73</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">72</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">76</td><td class="border p-2 text-center">76</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">73</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">74</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">71</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">74</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">67</td><td class="border p-2 text-center">69</td><td class="border p-2 text-center">71</td><td class="border p-2 text-center">70</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">76</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">74</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">74</td><td class="border p-2 text-center">78</td><td class="border p-2 text-center">77</td><td class="border p-2 text-center">81</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">68</td><td class="border p-2 text-center">71</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">78</td><td class="border p-2 text-center">70</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">68</td><td class="border p-2 text-center">71</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">76</td><td class="border p-2 text-center">77</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">73</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">70</td><td class="border p-2 text-center">68</td><td class="border p-2 text-center">69</td><td class="border p-2 text-center">71</td><td class="border p-2 text-center">77</td><td class="border p-2 text-center">78</td><td class="border p-2 text-center">68</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">78</td><td class="border p-2 text-center">77</td><td class="border p-2 text-center">79</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">79</td><td class="border p-2 text-center">77</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">73</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">71</td><td class="border p-2 text-center">68</td><td class="border p-2 text-center">70</td><td class="border p-2 text-center">71</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">78</td><td class="border p-2 text-center">78</td><td class="border p-2 text-center">76</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">72</td><td class="border p-2 text-center">75</td><td class="border p-2 text-center">74</td><td class="border p-2 text-center">76</td><td class="border p-2 text-center">77</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">78</td><td class="border p-2 text-center">78</td><td class="border p-2 text-center"></td><td class="border p-2 text-center"></td><td class="border p-2 text-center"></td><td class="border p-2 text-center"></td><td class="border p-2 text-center"></td><td class="border p-2 text-center"></td><td class="border p-2 text-center"></td><td class="border p-2 text-center"></td><td class="border p-2 text-center"></td><td class="border p-2 text-center"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 class="text-md font-semibold text-gray-700 mt-4 mb-2">Consignas de la Actividad 2</h4>
+                <ul class="consignas">
+                    <li>Construya un diagrama de tallo y hoja.</li>
+                    <li>Realice un box-plot que represente los datos.</li>
+                    <li>Agrupe en frecuencias de a 10 puntajes y grafique.</li>
+                    <li>Realice otra recodificación, esta vez en intervalos de a 5 grupos y grafique.</li>
+                    <li>¿Cuál de todos los gráficos le parece más representativo?</li>
+                </ul>
+            </section>
+            
+            <!-- Ejercicio 3 (Actividad 3) -->
+            <section class="mb-10" aria-labelledby="ej3-heading">
+                <h3 id="ej3-heading" class="text-xl font-semibold text-gray-800 mb-3">Actividad 3: Análisis de pizzas congeladas</h3>
+                <p class="mb-4">
+                    Los datos siguientes corresponden a una selección al azar de 71 pizzas congeladas reunidos en distintos supermercados. 
+                    Cada una de las pizzas se trituró y se mezcló y se tomó una muestra de la mezcla para realizar un análisis de sustancias nutritivas. 
+                    Las variables medidas fueron: el porcentaje de humedad (ph), y por cada 100 grs de muestra, la cantidad de proteína (prot), 
+                    la cantidad de grasa (gra), la cantidad de ceniza (cen), la cantidad de sodio (sod) y la cantidad de carbohidrato (carb), 
+                    así como las calorías por gramo de la misma (cal).
+                </p>
+
+                <h4 id="ej3-datos-heading" class="text-md font-semibold text-gray-700 mb-2">Datos Recolectados (Actividad 3)</h4>
+                <p class="text-sm text-gray-600 mb-2">Nota: Observe que hay datos ausentes (celdas vacías) que deben ser tratados.</p>
+                
+                <!-- Datos convertidos a tabla accesible -->
+                <div class="overflow-x-auto">
+                    <table class="min-w-full border border-gray-300 mb-4" aria-labelledby="ej3-datos-heading">
+                        <caption class="text-sm text-left text-gray-600 mb-2">
+                            Análisis de sustancias nutritivas en 71 pizzas.
+                        </caption>
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th scope="col" class="border p-2">OBS</th>
+                                <th scope="col" class="border p-2">ID</th>
+                                <th scope="col" class="border p-2">PH</th>
+                                <th scope="col" class="border p-2">PROT</th>
+                                <th scope="col" class="border p-2">GRA</th>
+                                <th scope="col" class="border p-2">CEN</th>
+                                <th scope="col" class="border p-2">SOD</th>
+                                <th scope="col" class="border p-2">CARB</th>
+                                <th scope="col" class="border p-2">CAL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t"><td class="border p-2 text-center">1</td><td class="border p-2 text-center">14025</td><td class="border p-2 text-center">28,35</td><td class="border p-2 text-center">19,99</td><td class="border p-2 text-center">45,78</td><td class="border p-2 text-center">5,08</td><td class="border p-2 text-center">1,63</td><td class="border p-2 text-center">0,8</td><td class="border p-2 text-center">4,95</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">2</td><td class="border p-2 text-center">14164</td><td class="border p-2 text-center">28,7</td><td class="border p-2 text-center">20</td><td class="border p-2 text-center">45,12</td><td class="border p-2 text-center">4,93</td><td class="border p-2 text-center">1,56</td><td class="border p-2 text-center">1,25</td><td class="border p-2 text-center">4,91</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">3</td><td class="border p-2 text-center">14154</td><td class="border p-2 text-center">30,91</td><td class="border p-2 text-center">19,65</td><td class="border p-2 text-center">42,45</td><td class="border p-2 text-center">4,81</td><td class="border p-2 text-center">1,65</td><td class="border p-2 text-center">2,81</td><td class="border p-2 text-center">4,72</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">4</td><td class="border p-2 text-center">24082</td><td class="border p-2 text-center">31,02</td><td class="border p-2 text-center">19,05</td><td class="border p-2 text-center">42,29</td><td class="border p-2 text-center">5,27</td><td class="border p-2 text-center">1,71</td><td class="border p-2 text-center">2,37</td><td class="border p-2 text-center">4,66</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">5</td><td class="border p-2 text-center">24138</td><td class="border p-2 text-center">29,62</td><td class="border p-2 text-center">21,1</td><td class="border p-2 text-center">43,37</td><td class="border p-2 text-center">5,05</td><td class="border p-2 text-center">1,69</td><td class="border p-2 text-center">0,86</td><td class="border p-2 text-center">4,78</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">6</td><td class="border p-2 text-center">14047</td><td class="border p-2 text-center">49,99</td><td class="border p-2 text-center">13,35</td><td class="border p-2 text-center">29,2</td><td class="border p-2 text-center">3,52</td><td class="border p-2 text-center">1,05</td><td class="border p-2 text-center">3,94</td><td class="border p-2 text-center">3,32</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">7</td><td class="border p-2 text-center">14074</td><td class="border p-2 text-center">50,72</td><td class="border p-2 text-center">13,93</td><td class="border p-2 text-center">29,88</td><td class="border p-2 text-center">3,6</td><td class="border p-2 text-center">1,03</td><td class="border p-2 text-center">2,87</td><td class="border p-2 text-center">3,32</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">8</td><td class="border p-2 text-center">14149</td><td class="border p-2 text-center">54,96</td><td class="border p-2 text-center">14,26</td><td class="border p-2 text-center">22,99</td><td class="border p-2 text-center">3,19</td><td class="border p-2 text-center">0,9</td><td class="border p-2 text-center">4,6</td><td class="border p-2 text-center">2,82</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">9</td><td class="border p-2 text-center">14113</td><td class="border p-2 text-center">54,12</td><td class="border p-2 text-center">14,06</td><td class="border p-2 text-center">24,95</td><td class="border p-2 text-center">3,14</td><td class="border p-2 text-center">0,82</td><td class="border p-2 text-center">3,73</td><td class="border p-2 text-center">2,96</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">10</td><td class="border p-2 text-center">24118</td><td class="border p-2 text-center">51,75</td><td class="border p-2 text-center">13,18</td><td class="border p-2 text-center">28,38</td><td class="border p-2 text-center">3,04</td><td class="border p-2 text-center">0,86</td><td class="border p-2 text-center">3,65</td><td class="border p-2 text-center">3,23</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">21</td><td class="border p-2 text-center">24057</td><td class="border p-2 text-center">47,7</td><td class="border p-2 text-center">22,23</td><td class="border p-2 text-center">21,33</td><td class="border p-2 text-center">3,98</td><td class="border p-2 text-center">4,76</td><td class="border p-2 text-center">3</td><td class="border p-2 text-center"></td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">22</td><td class="border p-2 text-center">24153</td><td class="border p-2 text-center">48,81</td><td class="border p-2 text-center">22,43</td><td class="border p-2 text-center">18,68</td><td class="border p-2 text-center">4,1</td><td class="border p-2 text-center">0,72</td><td class="border p-2 text-center">5,98</td><td class="border p-2 text-center">2,82</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">23</td><td class="border p-2 text-center">24123</td><td class="border p-2 text-center">46,28</td><td class="border p-2 text-center">21,51</td><td class="border p-2 text-center">25,44</td><td class="border p-2 text-center">4,58</td><td class="border p-2 text-center">0,6</td><td class="border p-2 text-center">2,19</td><td class="border p-2 text-center">3,24</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">24</td><td class="border p-2 text-center">24043</td><td class="border p-2 text-center">52,19</td><td class="border p-2 text-center">26</td><td class="border p-2 text-center">16,64</td><td class="border p-2 text-center">4,17</td><td class="border p-2 text-center">0,61</td><td class="border p-2 text-center">1</td><td class="border p-2 text-center">2,58</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">25</td><td class="border p-2 text-center">14012</td><td class="border p-2 text-center">85,7</td><td class="border p-2 text-center">1,98</td><td class="border p-2 text-center"></td><td class="border p-2 text-center">1,85</td><td class="border p-2 text-center">0,38</td><td class="border p-2 text-center">10,47</td><td class="border p-2 text-center">0,5</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">26</td><td class="border p-2 text-center">14048</td><td class="border p-2 text-center">85,42</td><td class="border p-2 text-center">1,93</td><td class="border p-2 text-center"></td><td class="border p-2 text-center">1,82</td><td class="border p-2 text-center">0,36</td><td class="border p-2 text-center">10,83</td><td class="border p-2 text-center">0,51</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">27</td><td class="border p-2 text-center">14167</td><td class="border p-2 text-center">85,95</td><td class="border p-2 text-center">1,42</td><td class="border p-2 text-center"></td><td class="border p-2 text-center">1,71</td><td class="border p-2 text-center">0,36</td><td class="border p-2 text-center">10,92</td><td class="border p-2 text-center">0,49</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">28</td><td class="border p-2 text-center">34001</td><td class="border p-2 text-center">85,99</td><td class="border p-2 text-center">1,68</td><td class="border p-2 text-center"></td><td class="border p-2 text-center">1,67</td><td class="border p-2 text-center">0,32</td><td class="border p-2 text-center">10,66</td><td class="border p-2 text-center">0,49</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">29</td><td class="border p-2 text-center">24105</td><td class="border p-2 text-center">85,12</td><td class="border p-2 text-center">1,69</td><td class="border p-2 text-center"></td><td class="border p-2 text-center">1,94</td><td class="border p-2 text-center">0,44</td><td class="border p-2 text-center">11,25</td><td class="border p-2 text-center">0,52</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">30</td><td class="border p-2 text-center">24116</td><td class="border p-2 text-center">85,17</td><td class="border p-2 text-center">1,42</td><td class="border p-2 text-center"></td><td class="border p-2 text-center">1,68</td><td class="border p-2 text-center">0,37</td><td class="border p-2 text-center">11,73</td><td class="border p-2 text-center">0,53</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">41</td><td class="border p-2 text-center">14118</td><td class="border p-2 text-center">29,79</td><td class="border p-2 text-center">8,17</td><td class="border p-2 text-center">14,35</td><td class="border p-2 text-center">1,49</td><td class="border p-2 text-center">0,46</td><td class="border p-2 text-center">46,2</td><td class="border p-2 text-center">3,46</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">42</td><td class="border p-2 text-center">14143</td><td class="border p-2 text-center">29,54</td><td class="border p-2 text-center">7,79</td><td class="border p-2 text-center">15,08</td><td class="border p-2 text-center">1,41</td><td class="border p-2 text-center">0,45</td><td class="border p-2 text-center">46,18</td><td class="border p-2 text-center">3,52</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">43</td><td class="border p-2 text-center">14008</td><td class="border p-2 text-center"></td><td class="border p-2 text-center">8,29</td><td class="border p-2 text-center">16,69</td><td class="border p-2 text-center">1,46</td><td class="border p-2 text-center">0,69</td><td class="border p-2 text-center">46,64</td><td class="border p-2 text-center">3,7</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">44</td><td class="border p-2 text-center">24035</td><td class="border p-2 text-center">27,65</td><td class="border p-2 text-center">7,78</td><td class="border p-2 text-center">17,3</td><td class="border p-2 text-center">1,29</td><td class="border p-2 text-center">0,4</td><td class="border p-2 text-center">46,25</td><td class="border p-2 text-center">3,72</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">45</td><td class="border p-2 text-center">24049</td><td class="border p-2 text-center">28,33</td><td class="border p-2 text-center">7,82</td><td class="border p-2 text-center">17,96</td><td class="border p-2 text-center">1,41</td><td class="border p-2 text-center">0,45</td><td class="border p-2 text-center">44,48</td><td class="border p-2 text-center">3,71</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">46</td><td class="border p-2 text-center">24103</td><td class="border p-2 text-center">30,15</td><td class="border p-2 text-center">8,06</td><td class="border p-2 text-center">12,23</td><td class="border p-2 text-center">1,5</td><td class="border p-2 text-center">0,47</td><td class="border p-2 text-center">48,06</td><td class="border p-2 text-center">3,35</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">47</td><td class="border p-2 text-center">34034</td><td class="border p-2 text-center">28,36</td><td class="border p-2 text-center">7,62</td><td class="border p-2 text-center">19,29</td><td class="border p-2 text-center">1,45</td><td class="border p-2 text-center">0,47</td><td class="border p-2 text-center">43,28</td><td class="border p-2 text-center">3,77</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">48</td><td class="border p-2 text-center">14153</td><td class="border p-2 text-center">28,83</td><td class="border p-2 text-center">8,26</td><td class="border p-2 text-center">20,1</td><td class="border p-2 text-center">1,37</td><td class="border p-2 text-center">0,42</td><td class="border p-2 text-center">41,44</td><td class="border p-2 text-center">3,8</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">49</td><td class="border p-2 text-center">14077</td><td class="border p-2 text-center">33,09</td><td class="border p-2 text-center">7,87</td><td class="border p-2 text-center">12,07</td><td class="border p-2 text-center">1,37</td><td class="border p-2 text-center">0,44</td><td class="border p-2 text-center">45,6</td><td class="border p-2 text-center">3,23</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">50</td><td class="border p-2 text-center">14166</td><td class="border p-2 text-center">27,56</td><td class="border p-2 text-center">8,25</td><td class="border p-2 text-center">14,65</td><td class="border p-2 text-center">1,45</td><td class="border p-2 text-center">0,46</td><td class="border p-2 text-center">48,09</td><td class="border p-2 text-center">3,57</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">61</td><td class="border p-2 text-center">34022</td><td class="border p-2 text-center">54,28</td><td class="border p-2 text-center">10,75</td><td class="border p-2 text-center">13,87</td><td class="border p-2 text-center">2,13</td><td class="border p-2 text-center">0,46</td><td class="border p-2 text-center">18,97</td><td class="border p-2 text-center">2,4</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">62</td><td class="border p-2 text-center">34021</td><td class="border p-2 text-center">54,54</td><td class="border p-2 text-center">10,4</td><td class="border p-2 text-center">13,22</td><td class="border p-2 text-center">2,1</td><td class="border p-2 text-center">0,47</td><td class="border p-2 text-center">19,74</td><td class="border p-2 text-center">2,4</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">63</td><td class="border p-2 text-center">34014</td><td class="border p-2 text-center">56,77</td><td class="border p-2 text-center">10,37</td><td class="border p-2 text-center">12,17</td><td class="border p-2 text-center">2,02</td><td class="border p-2 text-center"></td><td class="border p-2 text-center">18,67</td><td class="border p-2 text-center">2,26</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">64</td><td class="border p-2 text-center">34026</td><td class="border p-2 text-center">54,17</td><td class="border p-2 text-center">10,13</td><td class="border p-2 text-center">13,25</td><td class="border p-2 text-center">2,07</td><td class="border p-2 text-center">0,46</td><td class="border p-2 text-center">20,38</td><td class="border p-2 text-center">2,41</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">65</td><td class="border p-2 text-center">14043</td><td class="border p-2 text-center">47,84</td><td class="border p-2 text-center">10,16</td><td class="border p-2 text-center">14,56</td><td class="border p-2 text-center">2,27</td><td class="border p-2 text-center">0,54</td><td class="border p-2 text-center">25,17</td><td class="border p-2 text-center">2,72</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">66</td><td class="border p-2 text-center">24073</td><td class="border p-2 text-center">46,13</td><td class="border p-2 text-center">10,84</td><td class="border p-2 text-center">13,99</td><td class="border p-2 text-center">2,38</td><td class="border p-2 text-center">0,64</td><td class="border p-2 text-center">26,66</td><td class="border p-2 text-center">2,76</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">67</td><td class="border p-2 text-center">24071</td><td class="border p-2 text-center">46,22</td><td class="border p-2 text-center">11,26</td><td class="border p-2 text-center">15,93</td><td class="border p-2 text-center">2,47</td><td class="border p-2 text-center">0,63</td><td class="border p-2 text-center">24,12</td><td class="border p-2 text-center">2,85</td></tr>
+                            <tr class="border-t"><td class="border p-2 text-center">68</td><td class="border p-2 text-center">24056</td><td class="border p-2 text-center">43,45</td><td class="border p-2 text-center">10,81</td><td class="border p-2 text-center">19,49</td><td class="border p-2 text-center">2,51</td><td class="border p-2 text-center">0,68</td><td class="border p-2 text-center">23,74</td><td class="border p-2 text-center">3,14</td></tr>
+                            <tr class="border-t"><td classD="border p-2 text-center">69</td><td class="border p-2 text-center">24070</td><td class="border p-2 text-center">45,21</td><td class="border p-2 text-center">9,39</td><td class="border p-2 text-center">16,23</td><td class="border p-2 text-center">2,14</td><td class="border p-2 text-center">0,55</td><td class="border p-2 text-center">27,03</td><td class="border p-2 text-center">2,92</td></tr>
+                            <tr classD="border-t"><td class="border p-2 text-center">70</td><td class="border p-2 text-center">24069</td><td class="border p-2 text-center">43,15</td><td class="border p-2 text-center">11,79</td><td class="border p-2 text-center">18,46</td><td class="border p-2 text-center">2,43</td><td class="border p-2 text-center">0,67</td><td class="border p-2 text-center">24,17</td><td class="border p-2 text-center">3,1</td></tr>
+                            <tr classD="border-t"><td class="border p-2 text-center">71</td><td class="border p-2 text-center">34039</td><td class="border p-2 text-center">44,55</td><td class="border p-2 text-center">11,01</td><td class="border p-2 text-center">16,03</td><td class="border p-2 text-center">2,43</td><td class="border p-2 text-center">0,64</td><td class="border p-2 text-center">25,68</td><td class="border p-2 text-center">2,92</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h4 class="text-md font-semibold text-gray-700 mt-4 mb-2">Consignas de la Actividad 3</h4>
+                <ul>
+                    <li>Estudie las variables a nivel univariado y bi-variado. ¿Qué información puede brindar de cada una de ellas? Busque: Incoherencias, Datos ausentes, Outliers, Relación entre variables.</li>
+                    <li>Analice supuestos. Para ello, use: Scatter Plot, Box Plot, Estadística descriptiva, Diagrama Tallo-hoja, Tests.</li>
+                </ul>
+            </section>
+
+            <!-- Ejercicio 4 (Actividad 4) -->
+            <section class="mb-10" aria-labelledby="ej4-heading">
+                <h3 id="ej4-heading" class="text-xl font-semibold text-gray-800 mb-3">Actividad 4: Biomasa de alga (SPARTINA.xls)</h3>
+                <p class="mb-4">
+                    El archivo SPARTINA.xls, contiene información acerca de la biomasa del alga Spartina alterniflora y cinco variables ambientales 
+                    sobre muestras de tres zonas marinas distintas y a tres profundidades diferentes. Las variables son las siguientes:
+                </p>
+                <ul class="list-none pl-4">
+                    <li>Z = Zona</li>
+                    <li>P = Profundidad</li>
+                    <li>S = Salinidad en tanto por mil.</li>
+                    <li>A = Acidez (pH)</li>
+                    <li>K = Potasio (ppm)</li>
+                    <li>Na = Sodio (ppm)</li>
+                    <li>Zn = Zinc (ppm)</li>
+                    <li>B = Biomasa (g/m2)</li>
+                </ul>
+                
+                <h4 class="text-md font-semibold text-gray-700 mt-4 mb-2">Consignas de la Actividad 4</h4>
+                <ul class="consignas">
+                    <li>Construya un Histograma para las variables S, A, K, Na, Zn, y B. Obtenga las tablas de frecuencia para cada una de las variables. Explique los resultados.</li>
+                    <li>Obtenga las medidas de resumen para las variables del inciso anterior, para realizar un análisis descriptivo. Explique los resultados.</li>
+                    <li>Construya un gráfico Box Plot para las variables S, A, K, Na, Zn, y B, categorizadas o agrupadas por las variable Z y P. Explique los resultados obtenidos.</li>
+                    <li>Construya una gráfica de dispersión que ilustre cualquier relación posible que pudiera existir entre las variables K y Na, y Zn y Na. ¿Parece que existe alguna relación entre estas variables? Explique.</li>
+                </ul>
+            </section>
+
+            <!-- Ejercicio 5 (Actividad 5) -->
+            <section class="mb-10" aria-labelledby="ej5-heading">
+                <h3 id="ej5-heading" class="text-xl font-semibold text-gray-800 mb-3">Actividad 5: Hoteles (Hoteles.xls)</h3>
+                <p class="mb-4">
+                    El archivo Hoteles.xls, contiene información acerca de los hoteles internacionales en la zona de Washington DC. 
+                    Las variables de estos datos son la localización, la cantidad de cuartos, la tarifa mínima y máxima de verano con base en dos personas, 
+                    si el hotel cuenta con comedor, si tiene bar, si sirven desayuno continental gratis, si tiene piscina y el tipo de hotel.
+                </p>
+                
+                <h4 class="text-md font-semibold text-gray-700 mt-4 mb-2">Consignas de la Actividad 5</h4>
+                <ul class="consignas">
+                    <li>Construya una gráfica de dispersión que ilustre cualquier relación posible que pudiera existir entre el costo mínimo por cuarto y la cantidad de cuartos en el hotel. ¿Existe alguna relación entre estas dos variables? Explique.</li>
+                    <li>Construya una gráfica de dispersión que ilustre cualquier relación posible que pudiera existir entre el costo máximo por cuarto y la cantidad de cuartos en el hotel.</li>
+                    <li>Con base en la gráfica del inciso anterior, ¿Parece que algunos hoteles constituyen outliers de acuerdo a sus datos?</li>
+                    <li>Considere las variables Rooms, Min_Tarifa y Max_Tarifa. Obtenga las medidas de Resumen (media, DE, mediana, Q1, Q3) y las tablas de frecuencia para n= 4 y 5 clases. Explique los resultados.</li>
+                    <li>Construya un gráfico Box Plot para las variables Min_Tarifa y Max_Tarifa, categorizadas ó agrupadas por la variable Piscina. De manera similar, obtenga un Box Plot agrupando por la variable Comedor. Explique su resultado.</li>
+                </ul>
+            </section>
+
+            <!-- Ejercicio 6 (Actividad 6) -->
+            <section class="mb-10" aria-labelledby="ej6-heading">
+                <h3 id="ej6-heading" class="text-xl font-semibold text-gray-800 mb-3">Actividad 6: Dataset Iris</h3>
+                <p class="mb-4">
+                    El dataset Iris es uno de los más usados dentro del Data Mining. Investigue sobre dicho dataset y las técnicas que lo han usado para pruebas.
+                </p>
+                
+                <h4 class="text-md font-semibold text-gray-700 mt-4 mb-2">Consignas de la Actividad 6</h4>
+                <ul class="consignas">
+                    <li>Realice un estudio uni y bivariado sobre las variables del mismo (especie, longitud del sépalo, ancho del sépalo, longitud del pétalo y ancho del pétalo).</li>
+                    <li>Con la información obtenida en el inciso anterior ¿Es posible caracterizar a las especies del dataset?</li>
+                    <li>Con la información obtenida del inciso b), ¿Se pudieron detectar outliers? Si es así, investigue si los valores son posibles o no.</li>
+                </ul>
+            </section>
+
+            <!-- Ejercicio 7 (Actividad 7) -->
+            <section class="mb-10" aria-labelledby="ej7-heading">
+                <h3 id="ej7-heading" class="text-xl font-semibold text-gray-800 mb-3">Actividad 7: Caras de Chernoff</h3>
+                <p>
+                    Investigue sobre las caras de Chernoff (características, ventajas, desventajas, software). Muestre un caso de aplicación.
+                </p>
+            </section>
+
+            <!-- PRINCIPIO DUA 3: Múltiples Medios de Implicación (El Por Qué) -->
+            <section class="mb-10 p-4 bg-green-50 border border-green-200 rounded-lg" aria-labelledby="dua3-heading">
+                <h3 id="dua3-heading" class="text-xl font-semibold text-green-800 mb-3">Principio DUA 3: Múltiples Medios de Implicación (El Por Qué)</h3>
+                
+                <h4 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Microdesafío Semanal</h4>
+                <div class="p-3 border rounded-md bg-white shadow-sm">
+                    <strong>¡Desafío de la Semana!</strong>
+                    <p class="mt-1">En los datos de la Actividad 2 (Golf), ¿puedes identificar visualmente un posible *outlier*? Justifica tu respuesta en el foro. ¿Cómo impacta ese valor en la media?</p>
+                </div>
+
+                <h4 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Elección y Contexto</h4>
+                <ul>
+                    <li>Se permite al estudiante seleccionar entre conjuntos de datos alternativos (ej. datos de rendimiento académico, salud pública) para aplicar los métodos aprendidos.</li>
+                    <li>Se fomenta la colaboración por roles (quién limpia los datos, quien analiza, quien presenta resultados).</li>
+                </ul>
+            </section>
+
+            <!-- PRINCIPIO DUA 2: Múltiples Medios de Acción y Expresión (El Cómo) -->
+            <section class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg" aria-labelledby="dua2-heading">
+                <h3 id="dua2-heading" class="text-xl font-semibold text-yellow-800 mb-3">Principio DUA 2: Múltiples Medios de Acción y Expresión (El Cómo)</h3>
+                
+                <h4 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Evaluación Flexible</h4>
+                <p>Para demostrar lo aprendido en esta unidad, puedes elegir una de las siguientes opciones:</p>
+                <ul class="list-disc">
+                    <li>Un informe escrito tradicional con gráficos (PDF accesible).</li>
+                    <li>Una presentación oral grabada (video/audio) explicando tu análisis.</li>
+                    <li>Un mapa conceptual digital interactivo que resuma tu proceso.</li>
+                    <li>Una exposición con ejemplos de código comentado en R/Python.</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Comunidad y Ayuda</h4>
+                <p>Puedes expresar tus dificultades mediante texto, audio o capturas de pantalla en nuestro foro de la cátedra.</p>
+                <a href="#" class="inline-block mt-2 px-4 py-2 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Ir al Foro de Dudas
+                </a>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
